@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kakao Login</title>
+</head>
+<body>
+
+<button id="kakao-login-btn">카카오 로그인</button>
+
+<script>
+
+    document.getElementById('kakao-login-btn').addEventListener('click', function () {
+        const kakaoAuthUrl = `http://localhost:8080/login`;
+        window.location.href = kakaoAuthUrl;
+    });
+
+
+</script>
+
+</body>
+</html>
