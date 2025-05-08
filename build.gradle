@@ -1,0 +1,65 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.4.5'
+	id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'com.paladyn'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(17)
+	}
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	// Spring Web (REST API, Controller 등)
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+
+	// Spring Security (JWT, OAuth2 등 보안 기능 포함)
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+
+	// Spring Data JPA (ORM, DB 연동)
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+	// Thymeleaf 템플릿 엔진 (웹 페이지 렌더링)
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+
+	// Lombok (Getter, Setter, Constructor 자동 생성)
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+
+	// MySQL 드라이버
+	runtimeOnly 'com.mysql:mysql-connector-j'
+
+	// JWT 토큰 관련 라이브러리 (JJWT)
+	implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
+	implementation 'io.jsonwebtoken:jjwt-impl:0.11.5'
+	implementation 'io.jsonwebtoken:jjwt-jackson:0.11.5'
+
+	// Swagger(OpenAPI) UI for Spring Web MVC
+	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.2'
+
+	// OAuth2 클라이언트 (카카오 로그인 등)
+	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+
+	// 테스트 의존성
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.security:spring-security-test'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
